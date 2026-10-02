@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import styles from "../../../styles/RegisterForm.module.css";
 
-type Errors = {
+interface Errors {
   username?: string[];
   email?: string[];
   password?: string[];
@@ -10,6 +11,8 @@ type Errors = {
 };
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -48,11 +51,14 @@ const RegisterForm = () => {
           password: "",
           confirm_password: "",
         });
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        navigate("/login");
       }
     } catch (err) {
       if (axios.isAxiosError(err)) {
         console.log(err.response?.status);
         console.log(err.response?.data);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         setErrors(err.response?.data);
       } else {
         console.error("An unexpected error occurred:", err);
@@ -65,6 +71,7 @@ const RegisterForm = () => {
     <div className={styles["register-form"]}>
       <h2 style={{ color: "#f3f4f6" }}>Register</h2>
       {message && <p>{message}</p>}
+      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={onSubmit}>
         <div className={styles["form-group"]}>
           <label>Username:</label>

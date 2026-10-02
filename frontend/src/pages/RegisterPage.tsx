@@ -5,6 +5,7 @@ const RegisterPage = () => {
     <div>
       <h1>Ready to join us?</h1>
       <RegisterForm />
+      <p>Already have an account? <a href="/login">Login here</a></p>
     </div>
   );
 };
