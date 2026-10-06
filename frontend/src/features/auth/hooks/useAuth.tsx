@@ -8,8 +8,7 @@ import {
 import axios from "axios";
 
 interface AuthUser {
-  token: string;
-  [key: string]: unknown;
+  access: string;
 };
 
 interface AuthContextValue {
@@ -29,11 +28,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const access = localStorage.getItem("access");
 
-    if (token) {
+    if (access) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUser({ token });
+      setUser({ access });
     }
 
     setLoading(false);
@@ -41,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (username: string, password: string) => {
     try {
-      const response = await axios.post<{ token: string; user_data?: AuthUser }>(
+      const response = await axios.post<{ access: string }>(
         "http://localhost:8000/auth/login/",
         {
           username,
@@ -49,11 +48,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         },
       );
 
-      const { token, user_data } = response.data;
-      const nextUser = user_data ? { ...user_data, token } : { token };
+      const { access } = response.data;
 
-      localStorage.setItem("token", token);
-      setUser(nextUser);
+      localStorage.setItem("access", access);
+      setUser({ access });
       return { success: true, message: "Login successful" };
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -72,7 +70,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("access");
     setUser(null);
   };
 

@@ -5,6 +5,7 @@ import { AuthProvider } from "./features/auth/hooks/useAuth";
 import "./App.css";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DashboardPage from "./pages/DashboardPage";
+import PantryPage from "./pages/PantryPage";
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/pantry"
+            element={
+              <ProtectedRoute>
+                <PantryPage />
               </ProtectedRoute>
             }
           />
