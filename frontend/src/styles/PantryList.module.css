@@ -1,0 +1,29 @@
+.pantry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.pantry-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #113f48;
+}
+
+.pantry-list-title {
+  font-size: 1rem;
+  color: #113f48;
+  font-weight: 700;
+}
+
+.pantry-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}

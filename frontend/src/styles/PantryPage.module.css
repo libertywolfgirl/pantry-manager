@@ -1,0 +1,28 @@
+.pantry-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 60rem;
+  margin: 5rem auto;
+  padding: 3rem;
+  background-color: #eff9f7;
+  border-radius: 2rem;
+  color: #113f48;
+}
+
+.pantry-tagline {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: teal;
+    margin-top: 1rem;
+}
+
+.pantry-heading {
+    font-weight: 800;
+    color: #113f48;
+}
+
+.pantry-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}

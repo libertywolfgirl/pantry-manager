@@ -1,0 +1,16 @@
+.pantry-ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  width: 100%;
+  box-shadow: 0 4px 18px rgba(22, 66, 75, 0.05);
+}
+
+.pantry-ingredient:hover {
+  box-shadow: 0 8px 24px rgba(22, 66, 75, 0.09);
+  border: teal 1px solid;
+}

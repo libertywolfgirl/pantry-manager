@@ -1,61 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useAuth } from "../features/auth/hooks/useAuth";
+import { useState } from "react";
+import AddButton from "../features/pantry/components/AddButton";
+import PantryList from "../features/pantry/components/PantryList";
+import styles from "../styles/PantryPage.module.css";
 
-interface PantryIngredient {
+export interface PantryIngredientType {
   id: number;
   name: string;
 }
 
 const PantryPage = () => {
-  const { user } = useAuth();
-  const [ingredients, setIngredients] = useState<PantryIngredient[]>([]);
-  const access = user?.access;
-
-  useEffect(() => {
-    if (!access) {
-      return;
-    }
-
-    axios
-      .get<PantryIngredient[]>("http://localhost:8000/api/pantry/", {
-        headers: { Authorization: `Bearer ${access}` },
-      })
-      .then((response) => setIngredients(response.data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [access]);
-
-  const addIngredient = () => {
-    if (!access) {
-      return;
-    }
-
-    axios
-      .post<PantryIngredient>(
-        "http://localhost:8000/api/pantry/",
-        { name: "New Ingredient" },
-        { headers: { Authorization: `Bearer ${access}` } },
-      )
-      .then((response) => {
-        setIngredients((currentIngredients) => [
-          ...currentIngredients,
-          response.data,
-        ]);
-      })
-      .catch((error) => console.error("Error adding Ingredient:", error));
-  };
-
+  const [ingredients, setIngredients] = useState<PantryIngredientType[]>([]);
+  
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Django + React Decoupled App</h1>
-      <button onClick={addIngredient} disabled={!access}>
-        Add Quick Ingredient
-      </button>
-      <ul>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.name}</li>
-        ))}
-      </ul>
+    <div className={styles["pantry-page"]}>
+      <p><a href="/">Dashboard</a></p>
+      <p className={styles["pantry-tagline"]}>KITCHEN INVENTORY</p>
+      <h1 className={styles["pantry-heading"]}>My Pantry</h1>
+      <p className={styles["pantry-description"]}>
+        Keep track of the staples you have on hand, and make every meal a little
+        easier.
+      </p>
+      <AddButton setIngredients={setIngredients} />
+      <PantryList ingredients={ingredients} setIngredients={setIngredients} />
     </div>
   );
 };
