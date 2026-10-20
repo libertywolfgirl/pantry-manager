@@ -33,7 +33,7 @@ class Recipe(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=["user", "title", "ingredients"],
+                fields=["user", "title"],
                 name="unique_user_recipe"
             )
         ]

@@ -1,0 +1,22 @@
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.recipe-list-title {
+  font-size: 1rem;
+  color: #113f48;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.recipe-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}

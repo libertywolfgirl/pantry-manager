@@ -1,0 +1,71 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { useAuth } from "../features/auth/hooks/useAuth";
+import RecipeCard from "../features/recipes/components/RecipeCard";
+import type { RecipeType } from "./RecipesPage";
+
+const isRecipe = (value: unknown): value is RecipeType => {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const candidate = value as Partial<RecipeType>;
+  return (
+    typeof candidate.id === "number" &&
+    typeof candidate.title === "string" &&
+    Array.isArray(candidate.ingredients)
+  );
+};
+
+const RecipePage = () => {
+  const { id } = useParams();
+  const location = useLocation();
+  const { user } = useAuth();
+  const navigationState: unknown = location.state;
+  const recipeFromNavigation =
+    typeof navigationState === "object" &&
+    navigationState !== null &&
+    "recipe" in navigationState &&
+    isRecipe(navigationState.recipe)
+      ? navigationState.recipe
+      : undefined;
+  const [recipe, setRecipe] = useState<RecipeType | undefined>(
+    recipeFromNavigation,
+  );
+  const [loading, setLoading] = useState(!recipeFromNavigation);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (recipeFromNavigation || !id || !user?.access) {
+      return;
+    }
+
+    axios
+      .get<RecipeType>(`http://localhost:8000/api/recipes/${id}/`, {
+        headers: { Authorization: `Bearer ${user.access}` },
+      })
+      .then((response) => setRecipe(response.data))
+      .catch((requestError: unknown) => {
+        console.error("Error fetching recipe:", requestError);
+        setError("Unable to load this recipe.");
+      })
+      .finally(() => setLoading(false));
+  }, [id, recipeFromNavigation, user?.access]);
+
+  if (loading) {
+    return <p>Loading recipe...</p>;
+  }
+
+  if (error || !recipe) {
+    return <p>{error ?? "Recipe not found."}</p>;
+  }
+
+  return (
+    <div>
+      <RecipeCard recipe={recipe} />
+    </div>
+  );
+};
+
+export default RecipePage;

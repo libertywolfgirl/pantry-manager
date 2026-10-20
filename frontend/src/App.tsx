@@ -6,6 +6,8 @@ import "./App.css";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import PantryPage from "./pages/PantryPage";
+import RecipesPage from "./pages/RecipesPage";
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   return (
@@ -27,6 +29,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <PantryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recipes"
+            element={
+              <ProtectedRoute>
+                <RecipesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recipes/:id"
+            element={
+              <ProtectedRoute>
+                <RecipePage />
               </ProtectedRoute>
             }
           />

@@ -31,11 +31,8 @@ def recipe_update(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = RecipeSerializer(item, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer = RecipeSerializer(item)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'PATCH':
         serializer = RecipeSerializer(item, data=request.data)

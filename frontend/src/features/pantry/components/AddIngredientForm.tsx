@@ -16,8 +16,8 @@ const AddIngredientForm = ({
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Prevent standard page reload
-    onSubmit(formData); // Send data to parent
+    e.preventDefault();
+    onSubmit(formData);
   };
 
   return (

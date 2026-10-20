@@ -10,6 +10,9 @@ const DashboardPage = () => {
       <p>
         <a href="/pantry">Pantry</a>
       </p>
+      <p>
+        <a href="/recipes">Recipes</a>
+      </p>
     </div>
   );
 };

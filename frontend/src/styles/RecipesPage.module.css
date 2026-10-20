@@ -1,0 +1,28 @@
+.recipe-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  margin: 4rem auto;
+  padding: 3rem;
+  background-color: #eff9f7;
+  border-radius: 2rem;
+  color: #113f48;
+}
+
+.recipe-tagline {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: teal;
+    margin-top: 1rem;
+}
+
+.recipe-heading {
+    font-weight: 800;
+    color: #113f48;
+}
+
+.recipe-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
