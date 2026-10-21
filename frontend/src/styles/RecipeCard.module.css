@@ -43,7 +43,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   min-height: 20rem;
   background-color: #0d716b;
   color: #eff9f7;
@@ -74,7 +74,7 @@
 .ingredients-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
   min-height: 20rem;
   color: #0d716b;
   background-color: #eff9f7;
