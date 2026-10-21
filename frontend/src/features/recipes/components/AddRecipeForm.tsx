@@ -9,14 +9,17 @@ interface RecipeFormData {
 const AddRecipeForm = ({
   onSubmit,
   onCancel,
+  initialData = { title: "", ingredients: [{ name: "" }] },
+  submitLabel = "Submit",
+  isSubmitting = false,
 }: {
   onSubmit: (formData: RecipeFormData) => void;
   onCancel: () => void;
+  initialData?: RecipeFormData;
+  submitLabel?: string;
+  isSubmitting?: boolean;
 }) => {
-  const [formData, setFormData] = useState<RecipeFormData>({
-    title: "",
-    ingredients: [{ name: "" }],
-  });
+  const [formData, setFormData] = useState<RecipeFormData>(initialData);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, title: e.target.value }));
@@ -113,11 +116,16 @@ const AddRecipeForm = ({
           type="button"
           className={styles["btn-secondary"]}
           onClick={onCancel}
+          disabled={isSubmitting}
         >
           Cancel
         </button>
-        <button type="submit" className={styles["btn-primary"]}>
-          Submit
+        <button
+          type="submit"
+          className={styles["btn-primary"]}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Saving..." : submitLabel}
         </button>
       </div>
     </form>

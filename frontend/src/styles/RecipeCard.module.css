@@ -1,0 +1,132 @@
+.custom-button {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 100rem;
+  padding: 0.875rem 1.25rem;
+  font-weight: 700;
+  box-shadow:
+    0 10px 15px -3px rgba(15, 118, 110, 0.15),
+    0 4px 6px -4px rgba(15, 118, 110, 0.15);
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  transform: translateY(-0.125rem);
+}
+
+.custom-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 4px #ccfbf1,
+    0 10px 15px -3px rgba(15, 118, 110, 0.15);
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 20rem;
+  background-color: #0d716b;
+  color: #eff9f7;
+  align-items: flex-start;
+  padding: 2rem;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.title button {
+  color: #0f766e;
+  background-color: #eff9f7;
+}
+
+.title button:hover {
+  background-color: #d1f7ef;
+}
+
+.title p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #cbfbf1;
+}
+
+.title h1 {
+  font-weight: 800;
+}
+
+.ingredients-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 20rem;
+  color: #0d716b;
+  background-color: #eff9f7;
+  align-items: flex-start;
+  padding: 2rem;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.ingredients-container button {
+  background-color: #0f766e;
+  color: #eff9f7;
+}
+
+.ingredients-container button:hover {
+  background-color: #115e59;
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ingredients p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0d9488;
+}
+
+.ingredients ol {
+  width: 100%;
+  padding-left: 0;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.ingredients li {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #113f48;
+  text-align: left;
+}
+
+.ingredients-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ingredients-header h2 {
+  font-weight: 700;
+  color: #113f48;
+}

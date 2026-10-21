@@ -63,7 +63,13 @@ const RecipePage = () => {
 
   return (
     <div>
-      <RecipeCard recipe={recipe} />
+      <p>
+        <a href="/">Dashboard</a>
+      </p>
+      <p>
+        <a href="/recipes">Recipes</a>
+      </p>
+      <RecipeCard recipe={recipe} onRecipeUpdated={setRecipe} />
     </div>
   );
 };
