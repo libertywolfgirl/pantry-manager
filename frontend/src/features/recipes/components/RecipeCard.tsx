@@ -1,21 +1,15 @@
-import axios from "axios";
+import client from "../../../api/client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaPencilAlt } from "react-icons/fa";
 import Modal from "../../../components/Modal";
 import { useAuth } from "../../auth/hooks/useAuth";
-import type { RecipeType } from "../../../pages/RecipesPage";
-import styles from "../../../styles/RecipeCard.module.css";
+import styles from "../styles/RecipeCard.module.css";
 import AddRecipeForm from "./AddRecipeForm";
+import type { RecipeCardProps, RecipeType } from "../../../types/recipesTypes";
 
-const RecipeCard = ({
-  recipe,
-  onRecipeUpdated,
-}: {
-  recipe: RecipeType;
-  onRecipeUpdated: (recipe: RecipeType) => void;
-}) => {
+const RecipeCard = ({ recipe, onRecipeUpdated }: RecipeCardProps) => {
   const { title, ingredients } = recipe;
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -37,8 +31,8 @@ const RecipeCard = ({
     setActionError(null);
 
     try {
-      const response = await axios.patch<RecipeType>(
-        `http://localhost:8000/api/recipes/${recipe.id}/`,
+      const response = await client.patch<RecipeType>(
+        `/api/recipes/${recipe.id}/`,
         formData,
         { headers: { Authorization: `Bearer ${user.access}` } },
       );
@@ -62,10 +56,9 @@ const RecipeCard = ({
     setActionError(null);
 
     try {
-      await axios.delete(
-        `http://localhost:8000/api/recipes/${recipe.id}/`,
-        { headers: { Authorization: `Bearer ${user.access}` } },
-      );
+      await client.delete(`/api/recipes/${recipe.id}/`, {
+        headers: { Authorization: `Bearer ${user.access}` },
+      });
       void navigate("/recipes");
     } catch (error) {
       console.error("Error deleting recipe:", error);

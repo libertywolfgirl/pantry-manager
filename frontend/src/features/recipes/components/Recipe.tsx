@@ -1,17 +1,11 @@
-import axios from "axios";
+import client from "../../../api/client";
 import { IoTrashOutline } from "react-icons/io5";
 import { useAuth } from "../../../features/auth/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../styles/Recipe.module.css";
-import type { RecipeType } from "../../../pages/RecipesPage";
+import styles from "../styles/Recipe.module.css";
+import type { RecipeProps } from "../../../types/recipesTypes";
 
-const Recipe = ({
-  recipe,
-  setRecipes,
-}: {
-  recipe: RecipeType;
-  setRecipes: React.Dispatch<React.SetStateAction<RecipeType[]>>;
-}) => {
+const Recipe = ({ recipe, setRecipes }: RecipeProps) => {
   const { user } = useAuth();
   const access = user?.access;
   const navigate = useNavigate();
@@ -25,8 +19,8 @@ const Recipe = ({
       currentRecipes.filter((item) => item.id !== recipe.id),
     );
 
-    axios
-      .delete(`http://localhost:8000/api/recipes/${recipe.id}/`, {
+    client
+      .delete(`/api/recipes/${recipe.id}/`, {
         headers: { Authorization: `Bearer ${access}` },
       })
       .catch((error) => {

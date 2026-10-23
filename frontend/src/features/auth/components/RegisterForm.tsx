@@ -1,18 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import client from "../../../api/client";
 import styles from "../../../styles/RegisterForm.module.css";
-
-interface Errors {
-  username?: string[];
-  email?: string[];
-  password?: string[];
-  confirm_password?: string[];
-};
+import type { ErrorsType } from "../../../types/authTypes";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -21,7 +16,7 @@ const RegisterForm = () => {
   });
 
   const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState<Errors>({});
+  const [errors, setErrors] = useState<ErrorsType>({});
 
   const { username, email, password, confirm_password } = formData;
 
@@ -34,15 +29,12 @@ const RegisterForm = () => {
     setMessage("");
 
     if (formData.password !== formData.confirm_password) {
-      setErrors({confirm_password: ["Passwords don't match."]});
+      setErrors({ confirm_password: ["Passwords don't match."] });
       return;
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:8000/auth/register/",
-        formData,
-      );
+      const res = await client.post("/auth/register/", formData);
       if (res.status === 201) {
         setMessage("Registration successful! You can now log in.");
         setFormData({
@@ -88,10 +80,14 @@ const RegisterForm = () => {
         </div>
         <div className={styles["form-group"]}>
           <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={onChange} required />
-          {errors.email && (
-            <span className="errors">{errors.email[0]}</span>
-          )}
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={onChange}
+            required
+          />
+          {errors.email && <span className="errors">{errors.email[0]}</span>}
         </div>
         <div className={styles["form-group"]}>
           <label>Password:</label>
@@ -119,9 +115,7 @@ const RegisterForm = () => {
             <span className="errors">{errors.confirm_password[0]}</span>
           )}
         </div>
-        <button type="submit">
-          Sign Up
-        </button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

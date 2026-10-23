@@ -1,9 +1,9 @@
-import axios from "axios";
+import client from "../api/client";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../features/auth/hooks/useAuth";
 import RecipeCard from "../features/recipes/components/RecipeCard";
-import type { RecipeType } from "./RecipesPage";
+import type { RecipeType } from "../types/recipesTypes";
 
 const isRecipe = (value: unknown): value is RecipeType => {
   if (typeof value !== "object" || value === null) {
@@ -41,8 +41,8 @@ const RecipePage = () => {
       return;
     }
 
-    axios
-      .get<RecipeType>(`http://localhost:8000/api/recipes/${id}/`, {
+    client
+      .get<RecipeType>(`/api/recipes/${id}/`, {
         headers: { Authorization: `Bearer ${user.access}` },
       })
       .then((response) => setRecipe(response.data))

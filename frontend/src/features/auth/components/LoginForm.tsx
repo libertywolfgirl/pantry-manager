@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import styles from "../../../styles/LoginForm.module.css";
+import type { LoginType } from "../../../types/authTypes";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  
-  const { login } = useAuth() as {
-    login: (
-      username: string,
-      password: string,
-    ) => Promise<{ success: boolean; message: string }>;
-  };
+
+  const { login } = useAuth() as LoginType;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -36,7 +32,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles["login-form"]}>
-      <h2 style={{ color: '#f3f4f6'}}>Login</h2>
+      <h2 style={{ color: "#f3f4f6" }}>Login</h2>
       {error && <p className="errors">{error}</p>}
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={handleSubmit}>
@@ -63,10 +59,7 @@ const LoginForm = () => {
           />
         </div>
         <div className={styles["button-wrapper"]}>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-          >
+          <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Logging in..." : "Login"}
           </button>
         </div>

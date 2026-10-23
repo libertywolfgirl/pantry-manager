@@ -1,13 +1,8 @@
 import { useState } from "react";
 import styles from "../../../styles/Modal.module.css";
+import type { AddIngredientFormProps } from "../../../types/pantryTypes";
 
-const AddIngredientForm = ({
-  onSubmit,
-  onCancel,
-}: {
-  onSubmit: (formData: { name: string }) => void;
-  onCancel: () => void;
-}) => {
+const AddIngredientForm = ({ onSubmit, onCancel }: AddIngredientFormProps) => {
   const [formData, setFormData] = useState({ name: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +29,11 @@ const AddIngredientForm = ({
         />
       </div>
       <div className={styles["modal-actions"]}>
-        <button type="button" className={styles["btn-secondary"]} onClick={onCancel}>
+        <button
+          type="button"
+          className={styles["btn-secondary"]}
+          onClick={onCancel}
+        >
           Cancel
         </button>
         <button type="submit" className={styles["btn-primary"]}>

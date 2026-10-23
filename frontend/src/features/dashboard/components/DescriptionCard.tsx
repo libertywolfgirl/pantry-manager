@@ -1,8 +1,8 @@
 import { useState } from "react";
 import CheckIcon from "../../../components/icons/CheckIcon";
-import AddButton from "../../recipes/components/AddButton";
-import type { RecipeType } from "../../../pages/RecipesPage";
+import AddRecipeButton from "../../recipes/components/AddRecipeButton";
 import styles from "../styles/DescriptionCard.module.css";
+import type { RecipeType } from "../../../types/recipesTypes";
 
 const DescriptionCard = () => {
   const [, setRecipes] = useState<RecipeType[]>([]);
@@ -22,7 +22,7 @@ const DescriptionCard = () => {
           missing before you start cooking.
         </p>
       </div>
-      <AddButton setRecipes={setRecipes} />
+      <AddRecipeButton setRecipes={setRecipes} />
     </aside>
   );
 };

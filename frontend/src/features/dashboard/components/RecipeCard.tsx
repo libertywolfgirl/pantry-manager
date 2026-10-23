@@ -3,8 +3,8 @@ import ArrowIcon from "../../../components/icons/ArrowIcon";
 import RecipeIcon from "../../../components/icons/RecipeIcon";
 import { useAuth } from "../../auth/hooks/useAuth";
 import styles from "../styles/RecipeCard.module.css";
-import axios from "axios";
-import type { RecipeType } from "../../../pages/RecipesPage";
+import client from "../../../api/client";
+import type { RecipeType } from "../../../types/recipesTypes";
 
 const RecipeCard = () => {
   const { user } = useAuth();
@@ -16,8 +16,8 @@ const RecipeCard = () => {
       return;
     }
 
-    axios
-      .get<RecipeType[]>("http://localhost:8000/api/recipes/", {
+    client
+      .get<RecipeType[]>("/api/recipes/", {
         headers: { Authorization: `Bearer ${access}` },
       })
       .then((response) => setRecipes(response.data))

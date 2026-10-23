@@ -1,13 +1,8 @@
 import { useState } from "react";
-import AddButton from "../features/recipes/components/AddButton";
+import AddRecipeButton from "../features/recipes/components/AddRecipeButton";
 import RecipeList from "../features/recipes/components/RecipeList";
 import styles from "../styles/RecipesPage.module.css";
-
-export interface RecipeType {
-  id: number;
-  title: string;
-  ingredients: { name: string }[];
-}
+import type { RecipeType } from "../types/recipesTypes";
 
 const RecipesPage = () => {
   const [recipes, setRecipes] = useState<RecipeType[]>([]);
@@ -23,7 +18,7 @@ const RecipesPage = () => {
         to create a new recipe, and click on any recipe to view its details or
         remove it from your collection.
       </p>
-      <AddButton setRecipes={setRecipes} />
+      <AddRecipeButton setRecipes={setRecipes} />
       <RecipeList recipes={recipes} setRecipes={setRecipes} />
     </main>
   );

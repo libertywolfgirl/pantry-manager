@@ -6,26 +6,16 @@ import {
   useEffect,
 } from "react";
 import axios from "axios";
+import client from "../../../api/client";
+import type {
+  AuthContextValueType,
+  AuthUserType,
+} from "../../../types/authTypes";
 
-interface AuthUser {
-  access: string;
-  username?: string;
-}
-
-interface AuthContextValue {
-  user: AuthUser | null;
-  loading: boolean;
-  login: (
-    username: string,
-    password: string,
-  ) => Promise<{ success: boolean; message?: string }>;
-  logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+const AuthContext = createContext<AuthContextValueType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<AuthUserType | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,7 +23,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     if (access) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUser({ access, username: localStorage.getItem("username") ?? undefined });
+      setUser({
+        access,
+        username: localStorage.getItem("username") ?? undefined,
+      });
     }
 
     setLoading(false);
@@ -41,13 +34,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (username: string, password: string) => {
     try {
-      const response = await axios.post<{ access: string }>(
-        "http://localhost:8000/auth/login/",
-        {
-          username,
-          password,
-        },
-      );
+      const response = await client.post<{ access: string }>("/auth/login/", {
+        username,
+        password,
+      });
 
       const { access } = response.data;
 
@@ -85,7 +75,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useAuth = (): AuthContextValue => {
+export const useAuth = (): AuthContextValueType => {
   const context = useContext(AuthContext);
 
   if (!context) {

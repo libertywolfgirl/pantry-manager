@@ -1,10 +1,9 @@
 import { useState } from "react";
 import styles from "../../../styles/Modal.module.css";
-
-interface RecipeFormData {
-  title: string;
-  ingredients: { name: string }[];
-}
+import type {
+  AddRecipeFormProps,
+  RecipeFormData,
+} from "../../../types/recipesTypes";
 
 const AddRecipeForm = ({
   onSubmit,
@@ -12,13 +11,7 @@ const AddRecipeForm = ({
   initialData = { title: "", ingredients: [{ name: "" }] },
   submitLabel = "Submit",
   isSubmitting = false,
-}: {
-  onSubmit: (formData: RecipeFormData) => void;
-  onCancel: () => void;
-  initialData?: RecipeFormData;
-  submitLabel?: string;
-  isSubmitting?: boolean;
-}) => {
+}: AddRecipeFormProps) => {
   const [formData, setFormData] = useState<RecipeFormData>(initialData);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

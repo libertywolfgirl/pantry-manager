@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import axios from "axios";
+import client from "../../../api/client";
 import { useAuth } from "../../../features/auth/hooks/useAuth";
-import styles from "../../../styles/PantryList.module.css";
+import styles from "../styles/PantryList.module.css";
 import PantryIngredient from "./PantryIngredient";
-import type { PantryIngredientType } from "../../../pages/PantryPage";
+import type {
+  PantryIngredientType,
+  PantryListProps,
+} from "../../../types/pantryTypes";
 
-const PantryList = ({ ingredients, setIngredients }: { ingredients: PantryIngredientType[]; setIngredients: React.Dispatch<React.SetStateAction<PantryIngredientType[]>> }) => {
+const PantryList = ({ ingredients, setIngredients }: PantryListProps) => {
   const { user } = useAuth();
   const access = user?.access;
 
@@ -14,8 +17,8 @@ const PantryList = ({ ingredients, setIngredients }: { ingredients: PantryIngred
       return;
     }
 
-    axios
-      .get<PantryIngredientType[]>("http://localhost:8000/api/pantry/", {
+    client
+      .get<PantryIngredientType[]>("/api/pantry/", {
         headers: { Authorization: `Bearer ${access}` },
       })
       .then((response) => setIngredients(response.data))

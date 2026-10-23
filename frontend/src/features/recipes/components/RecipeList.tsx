@@ -1,17 +1,11 @@
 import { useEffect } from "react";
-import axios from "axios";
+import client from "../../../api/client";
 import { useAuth } from "../../../features/auth/hooks/useAuth";
-import styles from "../../../styles/RecipeList.module.css";
+import styles from "../styles/RecipeList.module.css";
 import Recipe from "./Recipe";
-import type { RecipeType } from "../../../pages/RecipesPage";
+import type { RecipeListProps, RecipeType } from "../../../types/recipesTypes";
 
-const RecipeList = ({
-  recipes,
-  setRecipes,
-}: {
-  recipes: RecipeType[];
-  setRecipes: React.Dispatch<React.SetStateAction<RecipeType[]>>;
-}) => {
+const RecipeList = ({ recipes, setRecipes }: RecipeListProps) => {
   const { user } = useAuth();
   const access = user?.access;
 
@@ -20,8 +14,8 @@ const RecipeList = ({
       return;
     }
 
-    axios
-      .get<RecipeType[]>("http://localhost:8000/api/recipes/", {
+    client
+      .get<RecipeType[]>("/api/recipes/", {
         headers: { Authorization: `Bearer ${access}` },
       })
       .then((response) => setRecipes(response.data))

@@ -1,16 +1,13 @@
-import axios from "axios";
+import client from "../../../api/client";
 import { IoTrashOutline } from "react-icons/io5";
 import { useAuth } from "../../../features/auth/hooks/useAuth";
-import styles from "../../../styles/PantryIngredient.module.css";
-import type { PantryIngredientType } from "../../../pages/PantryPage";
+import styles from "../styles/PantryIngredient.module.css";
+import type { PantryIngredientProps } from "../../../types/pantryTypes";
 
 const PantryIngredient = ({
   ingredient,
   setIngredients,
-}: {
-  ingredient: PantryIngredientType;
-  setIngredients: React.Dispatch<React.SetStateAction<PantryIngredientType[]>>;
-}) => {
+}: PantryIngredientProps) => {
   const { user } = useAuth();
   const access = user?.access;
 
@@ -23,8 +20,8 @@ const PantryIngredient = ({
       currentIngredients.filter((item) => item.id !== ingredient.id),
     );
 
-    axios
-      .delete(`http://localhost:8000/api/pantry/${ingredient.id}/`, {
+    client
+      .delete(`/api/pantry/${ingredient.id}/`, {
         headers: { Authorization: `Bearer ${access}` },
       })
       .catch((error) => {

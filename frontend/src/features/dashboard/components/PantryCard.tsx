@@ -3,8 +3,8 @@ import ArrowIcon from "../../../components/icons/ArrowIcon";
 import PantryIcon from "../../../components/icons/PantryIcon";
 import { useAuth } from "../../auth/hooks/useAuth";
 import styles from "../styles/PantryCard.module.css";
-import axios from "axios";
-import type { PantryIngredientType } from "../../../pages/PantryPage";
+import client from "../../../api/client";
+import type { PantryIngredientType } from "../../../types/pantryTypes";
 
 const PantryCard = () => {
   const { user } = useAuth();
@@ -16,8 +16,8 @@ const PantryCard = () => {
       return;
     }
 
-    axios
-      .get<PantryIngredientType[]>("http://localhost:8000/api/pantry/", {
+    client
+      .get<PantryIngredientType[]>("/api/pantry/", {
         headers: { Authorization: `Bearer ${access}` },
       })
       .then((response) => setIngredients(response.data))
