@@ -4,7 +4,6 @@ import { useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../features/auth/hooks/useAuth";
 import RecipeCard from "../features/recipes/components/RecipeCard";
 import type { RecipeType } from "./RecipesPage";
-import Header from "../components/Header";
 
 const isRecipe = (value: unknown): value is RecipeType => {
   if (typeof value !== "object" || value === null) {
@@ -63,10 +62,9 @@ const RecipePage = () => {
   }
 
   return (
-    <div>
-      <Header />
+    <main>
       <RecipeCard recipe={recipe} onRecipeUpdated={setRecipe} />
-    </div>
+    </main>
   );
 };
 

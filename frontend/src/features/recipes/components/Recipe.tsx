@@ -45,10 +45,13 @@ const Recipe = ({
 
   return (
     <div className={styles["recipe-container"]}>
-      <button className={styles["recipe-btn"]} onClick={handleRecipeClick}>{recipe.title}</button>
+      <button className={styles["recipe-btn"]} onClick={handleRecipeClick}>
+        {recipe.title}
+      </button>
       <button
         type="button"
         aria-label={`Remove ${recipe.title}`}
+        className={styles["remove-btn"]}
         onClick={removeRecipe}
       >
         <span>

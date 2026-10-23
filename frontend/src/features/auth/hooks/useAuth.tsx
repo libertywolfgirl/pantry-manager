@@ -9,7 +9,8 @@ import axios from "axios";
 
 interface AuthUser {
   access: string;
-};
+  username?: string;
+}
 
 interface AuthContextValue {
   user: AuthUser | null;
@@ -19,7 +20,7 @@ interface AuthContextValue {
     password: string,
   ) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
-};
+}
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     if (access) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUser({ access });
+      setUser({ access, username: localStorage.getItem("username") ?? undefined });
     }
 
     setLoading(false);
@@ -51,7 +52,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const { access } = response.data;
 
       localStorage.setItem("access", access);
-      setUser({ access });
+      localStorage.setItem("username", username);
+      setUser({ access, username });
       return { success: true, message: "Login successful" };
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -71,6 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     localStorage.removeItem("access");
+    localStorage.removeItem("username");
     setUser(null);
   };
 

@@ -43,6 +43,7 @@ const PantryIngredient = ({
       <button
         type="button"
         aria-label={`Remove ${ingredient.name}`}
+        className={styles["remove-btn"]}
         onClick={removeIngredient}
       >
         <span>

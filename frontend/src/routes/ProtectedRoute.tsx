@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../features/auth/hooks/useAuth";
+import Header from "../components/Header";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth() as { user: unknown; loading: boolean };
@@ -13,7 +14,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 };
 
 export default ProtectedRoute;
