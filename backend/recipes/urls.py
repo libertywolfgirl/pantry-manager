@@ -4,4 +4,9 @@ from recipes import views
 urlpatterns = [
     path('', views.recipe_create, name='recipe-list-create'),
     path('<int:pk>/', views.recipe_update, name='recipe-update'),
+    path(
+        '<int:pk>/missing-ingredients/',
+        views.missing_ingredients,
+        name='missing-ingredients',
+    ),
 ]

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Recipe, RecipeIngredient
+from .services import get_missing_ingredients
+
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=100, validators=[])

@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import Recipe
 from .serializers import RecipeSerializer
+from .services import get_missing_ingredients
+
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -46,3 +48,29 @@ def recipe_update(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     return None
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def missing_ingredients(request, pk):
+    try:
+        recipe = Recipe.objects.get(
+            pk=pk,
+            user=request.user,
+        )
+    except Recipe.DoesNotExist:
+        return Response(
+            {'detail': 'Recipe not found.'},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    missing = get_missing_ingredients(recipe, request.user)
+
+    return Response(
+        {
+            'recipe': recipe.pk,
+            'title': recipe.title,
+            'can_make': len(missing) == 0,
+            'missing_ingredients': sorted(missing),
+        },
+        status=status.HTTP_200_OK,
+    )
