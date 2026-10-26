@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../styles/LoginForm.module.css";
+import styles from "../styles/LoginForm.module.css";
 import type { LoginType } from "../../../types/authTypes";
 
 const LoginForm = () => {

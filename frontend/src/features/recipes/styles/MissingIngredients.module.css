@@ -1,0 +1,33 @@
+.container {
+  margin-top: 2rem;
+}
+
+.missing-ingredients-button {
+  background-color: #81e1d4;
+  color: rgb(10, 64, 57);
+  border-radius: 2rem;
+}
+
+.response {
+  margin-top: 1rem;
+}
+
+.response p {
+  margin-bottom: 1rem;
+}
+
+.response ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 4rem;
+}
+
+.response li {
+  border: 1px solid #9bf4dc;
+  border-radius: 10rem;
+  width: 10rem;
+  padding: 0.25rem;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}

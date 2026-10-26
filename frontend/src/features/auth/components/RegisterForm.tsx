@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import client from "../../../api/client";
-import styles from "../../../styles/RegisterForm.module.css";
+import styles from "../styles/RegisterForm.module.css";
 import type { ErrorsType } from "../../../types/authTypes";
 
 const RegisterForm = () => {

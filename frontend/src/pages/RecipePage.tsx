@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../features/auth/hooks/useAuth";
 import RecipeCard from "../features/recipes/components/RecipeCard";
 import type { RecipeType } from "../types/recipesTypes";
+import MissingIngredients from "../features/recipes/components/MissingIngredients";
 
 const isRecipe = (value: unknown): value is RecipeType => {
   if (typeof value !== "object" || value === null) {
@@ -64,6 +65,7 @@ const RecipePage = () => {
   return (
     <main>
       <RecipeCard recipe={recipe} onRecipeUpdated={setRecipe} />
+      <MissingIngredients user={user} recipe={recipe.id} />
     </main>
   );
 };

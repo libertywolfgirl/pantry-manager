@@ -1,3 +1,5 @@
+import type { AuthUserType } from "./authTypes";
+
 export interface RecipeType {
   id: number;
   title: string;
@@ -34,4 +36,14 @@ export interface RecipeCardProps {
 export interface RecipeListProps {
   recipes: RecipeType[];
   setRecipes: React.Dispatch<React.SetStateAction<RecipeType[]>>;
+}
+
+export interface MissingIngredientsProps {
+  user: AuthUserType | null;
+  recipe: number;
+}
+
+export interface MissingIngredientsResponse {
+  can_make: boolean;
+  missing_ingredients: string[];
 }
