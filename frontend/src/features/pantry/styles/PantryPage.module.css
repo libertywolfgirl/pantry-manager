@@ -5,24 +5,61 @@
   max-width: 60rem;
   margin: 5rem auto;
   padding: 3rem;
-  background-color: #eff9f7;
+  background-color: #73bdb6;
   border-radius: 2rem;
-  color: #113f48;
+  color: #043231;
 }
 
 .pantry-tagline {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #03504c;
+    color: #043231;
     margin-top: 1rem;
 }
 
 .pantry-heading {
     font-weight: 800;
-    color: #113f48;
+    line-height: 2rem;
+    color: #043231;
 }
 
 .pantry-description {
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1225px) {
+  .pantry-page {
+    max-width: 50rem;
+  }
+}
+
+@media (max-width: 1050px) {
+  .pantry-page {
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 775px) {
+  .pantry-page {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pantry-page {
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .pantry-page {
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .pantry-page {
+    max-width: 10rem;
+  }
 }

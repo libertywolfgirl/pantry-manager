@@ -12,7 +12,7 @@
 
 .circle-border {
   position: absolute;
-  right: 0;
+  right: 2.5rem;
   top: 0;
   height: 6rem;
   width: 6rem;
@@ -22,7 +22,7 @@
 
 .circle-solid {
   position: absolute;
-  right: 6rem;
+  right: 8.5rem;
   top: 3rem;
   height: 7rem;
   width: 7rem;
@@ -32,7 +32,7 @@
 
 .icon-box {
   position: absolute;
-  right: 1.55rem;
+  right: 4rem;
   top: 2rem;
   display: flex;
   height: 6rem;
