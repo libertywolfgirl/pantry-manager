@@ -95,6 +95,7 @@
   line-height: 2.25rem;
   font-weight: 700;
   text-align: left;
+  color: #bbe6e3;
 }
 
 .card-description {
@@ -103,7 +104,7 @@
   max-width: 24rem;
   font-size: 0.875rem;
   line-height: 1.5rem;
-  color: rgba(240, 253, 250, 0.75);
+  color: #ebfffe;
   text-align: left;
 }
 

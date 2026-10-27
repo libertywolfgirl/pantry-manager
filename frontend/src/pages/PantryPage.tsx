@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PantryList from "../features/pantry/components/PantryList";
-import styles from "../styles/PantryPage.module.css";
+import styles from "../features/pantry/styles/PantryPage.module.css";
 import AddIngredientButton from "../features/pantry/components/AddIngredientButton";
 import type { PantryIngredientType } from "../types/pantryTypes";
 

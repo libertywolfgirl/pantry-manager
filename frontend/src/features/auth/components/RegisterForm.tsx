@@ -66,10 +66,11 @@ const RegisterForm = () => {
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={onSubmit}>
         <div className={styles["form-group"]}>
-          <label>Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             name="username"
+            id="username"
             value={username}
             onChange={onChange}
             required
@@ -79,10 +80,11 @@ const RegisterForm = () => {
           )}
         </div>
         <div className={styles["form-group"]}>
-          <label>Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             name="email"
+            id="email"
             value={email}
             onChange={onChange}
             required
@@ -90,10 +92,11 @@ const RegisterForm = () => {
           {errors.email && <span className="errors">{errors.email[0]}</span>}
         </div>
         <div className={styles["form-group"]}>
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             name="password"
+            id="password"
             value={password}
             onChange={onChange}
             required
@@ -103,10 +106,11 @@ const RegisterForm = () => {
           )}
         </div>
         <div className={styles["form-group"]}>
-          <label>Confirm Password:</label>
+          <label htmlFor="password">Confirm Password:</label>
           <input
             type="password"
             name="confirm_password"
+            id="confirm_password"
             value={confirm_password}
             onChange={onChange}
             required

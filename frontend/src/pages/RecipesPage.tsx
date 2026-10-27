@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddRecipeButton from "../features/recipes/components/AddRecipeButton";
 import RecipeList from "../features/recipes/components/RecipeList";
-import styles from "../styles/RecipesPage.module.css";
+import styles from "../features/recipes/styles/RecipesPage.module.css";
 import type { RecipeType } from "../types/recipesTypes";
 
 const RecipesPage = () => {

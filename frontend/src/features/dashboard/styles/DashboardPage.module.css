@@ -15,7 +15,7 @@
 .tagline {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #cbfbf1;
+  color: var(--text-h);
   text-align: left;
 }
 
@@ -47,8 +47,3 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .tagline {
-    color: #0f766e;
-  }
-}

@@ -69,6 +69,7 @@
 
 .title h1 {
   font-weight: 800;
+  color: #18d4cb;
 }
 
 .ingredients-container {
@@ -102,7 +103,7 @@
 .ingredients p {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #0d9488;
+  color: #03504c;
 }
 
 .ingredients ol {

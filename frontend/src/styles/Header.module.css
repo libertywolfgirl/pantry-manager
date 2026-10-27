@@ -4,7 +4,7 @@
   justify-content: space-between;
   border-bottom: 1px solid #21807b;
   padding: 1.25rem 1.5rem;
-  background-color: #66d8cf;
+  background-color: var(--bg-h);
 }
 
 @media (min-width: 640px) {
@@ -50,7 +50,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #115e59;
+  color: var(--text);
 }
 
 .header-right {
