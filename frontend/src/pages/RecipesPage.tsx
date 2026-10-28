@@ -3,12 +3,20 @@ import AddRecipeButton from "../features/recipes/components/AddRecipeButton";
 import RecipeList from "../features/recipes/components/RecipeList";
 import styles from "../features/recipes/styles/RecipesPage.module.css";
 import type { RecipeType } from "../types/recipesTypes";
+import RecipeIcon from "../components/icons/RecipeIcon";
 
 const RecipesPage = () => {
   const [recipes, setRecipes] = useState<RecipeType[]>([]);
 
   return (
     <main className={styles["recipe-page"]}>
+      <span
+        className={`${styles["recipe-card__icon-box"]} ${styles["recipe-card__icon-box--main"]}`}
+      >
+        <span className={styles["recipe-card__icon-wrapper"]}>
+          <RecipeIcon />
+        </span>
+      </span>
       <p className={styles["recipe-tagline"]}>RECIPES</p>
       <h1 className={styles["recipe-heading"]}>All my available recipes</h1>
       <p className={styles["recipe-description"]}>

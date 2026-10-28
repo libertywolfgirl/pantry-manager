@@ -10,22 +10,32 @@
   color: #043231;
 }
 
+.pantry-icon-wrapper {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: #0f9994;
+}
+
 .pantry-tagline {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #043231;
-    margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #043231;
+  margin-top: 1rem;
 }
 
 .pantry-heading {
-    font-weight: 800;
-    line-height: 2rem;
-    color: #043231;
+  font-weight: 800;
+  line-height: 2rem;
+  color: #043231;
 }
 
 .pantry-description {
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 1225px) {
@@ -43,6 +53,7 @@
 @media (max-width: 775px) {
   .pantry-page {
     max-width: 30rem;
+    padding: 2rem;
   }
 }
 
@@ -50,11 +61,16 @@
   .pantry-page {
     max-width: 20rem;
   }
+
+  .pantry-icon-wrapper {
+    place-self: center;
+  }
 }
 
 @media (max-width: 450px) {
   .pantry-page {
     max-width: 15rem;
+    padding: 1rem;
   }
 }
 

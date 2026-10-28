@@ -30,3 +30,34 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 775px) {
+  .recipe-container {
+    max-width: 25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .recipe-container {
+    max-width: 18rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .recipe-container {
+    max-width: 12rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .recipe-container {
+    max-width: 8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .recipe-btn,
+  .remove-btn {
+    font-size: 0.875rem;
+    padding: 0.25rem;
+  }
+}

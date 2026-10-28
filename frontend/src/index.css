@@ -68,19 +68,12 @@ h2 {
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
 }
 h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
 }
 p {
   margin: 0;
@@ -106,8 +99,50 @@ input {
   font-weight: 600;
 }
 
+label {
+  color: #bbe6e3;
+}
+
 .errors {
   color: red;
   font-size: 14px;
   margin-top: 4px;
+}
+
+@media (max-width: 750px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  li {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.5rem;
+  }
+
+  h2 {
+    font-size: 0.875rem;
+  }
 }

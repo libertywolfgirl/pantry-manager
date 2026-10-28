@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles["modal-header"]}>
-          <h2>Add {title.toUpperCase()}</h2>
+          <h2>ADD {title.toUpperCase()}</h2>
           <button className={styles["close-btn"]} onClick={onClose}>
             &times;
           </button>

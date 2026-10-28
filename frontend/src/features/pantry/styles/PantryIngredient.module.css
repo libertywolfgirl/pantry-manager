@@ -20,3 +20,27 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 775px) {
+  .pantry-ingredient {
+    max-width: 25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pantry-ingredient {
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .pantry-ingredient {
+    max-width: 10rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .pantry-ingredient {
+    max-width: 8rem;
+  }
+}

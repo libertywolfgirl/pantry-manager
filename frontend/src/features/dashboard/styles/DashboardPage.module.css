@@ -44,12 +44,25 @@
 }
 
 @media (max-width: 767px) {
+  .dashboard-container {
+    justify-content: center;
+    max-width: 30rem;
+    padding: 2rem 1rem;
+  }
+
+  .tagline,
+  .heading,
+  .description {
+    text-align: center;
+  }
+
   .dashboard-content {
     grid-template-columns: 1fr;
     max-width: 50rem;
     margin: 0 auto;
-    min-height: 100vh;
+    margin-bottom: 4rem;
     place-items: center;
+    gap: 2rem;
   }
 }
 
@@ -57,9 +70,19 @@
   .description {
     max-width: 26rem;
   }
+
+  .dashboard-content {
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 425px) {
+  .dashboard-container {
+    max-width: 20rem;
+    padding: 1rem 0.5rem;
+  }
+
   .description {
     max-width: 20rem;
   }

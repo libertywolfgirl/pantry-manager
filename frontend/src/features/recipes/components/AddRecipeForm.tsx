@@ -47,7 +47,9 @@ const AddRecipeForm = ({
   return (
     <form onSubmit={handleSubmit} className={styles["modal-form"]}>
       <div className={styles["form-group"]}>
-        <label htmlFor="title">Title:</label>
+        <label className={styles.label} htmlFor="title">
+          Title:
+        </label>
         <input
           type="text"
           id="title"
@@ -58,7 +60,9 @@ const AddRecipeForm = ({
         />
       </div>
       <div className={styles["form-group"]}>
-        <label htmlFor="ingredients">Ingredients:</label>
+        <label className={styles.label} htmlFor="ingredients">
+          Ingredients:
+        </label>
         <div className={styles["input-container"]}>
           {formData.ingredients.map((ingredient, index) => (
             <div key={index}>

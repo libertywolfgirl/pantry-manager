@@ -18,7 +18,9 @@ const AddIngredientForm = ({ onSubmit, onCancel }: AddIngredientFormProps) => {
   return (
     <form onSubmit={handleSubmit} className={styles["modal-form"]}>
       <div className={styles["form-group"]}>
-        <label htmlFor="name">Name:</label>
+        <label className={styles.label} htmlFor="name">
+          Name:
+        </label>
         <input
           type="text"
           id="name"
