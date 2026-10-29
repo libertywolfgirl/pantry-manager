@@ -64,6 +64,11 @@ const RecipePage = () => {
 
   return (
     <main>
+      <title>Stocked - Recipe</title>
+      <meta
+        name="description"
+        content="View the ingredients needed for your recipe. Find out if you have all the necessary ingredients in your pantry."
+      />
       <RecipeCard recipe={recipe} onRecipeUpdated={setRecipe} />
       <MissingIngredients user={user} recipe={recipe.id} />
     </main>

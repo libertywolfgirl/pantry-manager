@@ -10,6 +10,11 @@ const PantryPage = () => {
 
   return (
     <main className={styles["pantry-page"]}>
+      <title>Stocked - Pantry</title>
+      <meta
+        name="description"
+        content="Keep track of all the ingredients in your pantry."
+      />
       <span className={styles["pantry-icon-wrapper"]}>
         <PantryIcon />
       </span>

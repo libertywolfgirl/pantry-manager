@@ -10,6 +10,11 @@ const RecipesPage = () => {
 
   return (
     <main className={styles["recipe-page"]}>
+      <title>Stocked - Recipes</title>
+      <meta
+        name="description"
+        content="Keep track of all your recipes and the ingredients they need."
+      />
       <span
         className={`${styles["recipe-card__icon-box"]} ${styles["recipe-card__icon-box--main"]}`}
       >

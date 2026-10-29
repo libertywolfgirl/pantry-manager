@@ -3,6 +3,8 @@ import RegisterForm from "../features/auth/components/RegisterForm";
 const RegisterPage = () => {
   return (
     <main>
+      <title>Stocked - Register</title>
+      <meta name="description" content="Register for Stocked." />
       <h1>Ready to join us?</h1>
       <p>
         Register to keep track of your pantry ingredients and recipes. Quickly

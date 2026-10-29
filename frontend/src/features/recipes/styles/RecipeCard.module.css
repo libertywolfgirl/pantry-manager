@@ -50,6 +50,7 @@
   align-items: flex-start;
   padding: 2rem;
   border-radius: 1rem 0 0 1rem;
+  line-height: 2rem;
 }
 
 .title button {
@@ -154,6 +155,10 @@
 @media (max-width: 500px) {
   .recipe-card {
     max-width: 20rem;
+  }
+
+  .title {
+    line-height: 1rem;
   }
 
   .title,

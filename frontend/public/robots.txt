@@ -1,0 +1,7 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /login/
+Allow: /register/
+
+# Link to your XML sitemap (replace with your actual domain)
+Sitemap: http://localhost:5173

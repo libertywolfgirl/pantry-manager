@@ -10,6 +10,11 @@ const DashboardPage = () => {
 
   return (
     <main>
+      <title>Stocked - Dashboard</title>
+      <meta
+        name="description"
+        content="Your pantry dashboard. Easily access your pantry ingredients and recipes."
+      />
       <div className={styles["dashboard-container"]}>
         <div className={styles["header-text"]}>
           <p className={styles.tagline}>YOUR KITCHEN DASHBOARD</p>
