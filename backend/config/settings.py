@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-bhsy-r+6r)venn-_xygk3ti^5qq@q$+3*ec$2fej74q_#c6l)b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
 
 # Application definition
 
@@ -65,7 +65,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'http://localhost:4173',
-    'http://127.0.0.1:4173'
+    'http://127.0.0.1:4173',
+    "https://vercel.app"
 ]
 
 CORS_ALLOW_METHODS = [
@@ -139,3 +140,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
